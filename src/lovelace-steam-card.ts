@@ -72,6 +72,7 @@ class LovelaceSteamCard extends LitElement {
     if (typeof entities === 'string') {
       const newEntities = [] as string[];
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       Object.values(this.hass.states).forEach((entity: any) => {
         if (entity.entity_id.startsWith(entities)) {
           newEntities.push(entity.entity_id);
@@ -125,6 +126,7 @@ class LovelaceSteamCard extends LitElement {
 
   handlePopup(entity) {
     const entityId = entity.entity_id;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const e = new Event('hass-more-info', { composed: true }) as any;
     e.detail = { entityId };
     this.dispatchEvent(e);
