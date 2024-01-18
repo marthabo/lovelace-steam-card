@@ -32,7 +32,7 @@ const plugins = [
 
 export default [
   {
-    input: 'src/kb-steam-card.ts',
+    input: 'src/lovelace-steam-card.ts',
     output: {
       dir: 'dist',
       format: 'es',
