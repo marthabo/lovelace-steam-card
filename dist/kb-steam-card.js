@@ -189,7 +189,7 @@ const J=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
                 <div class="kb-steam-value">${i.attributes.game||"-"}</div>
                 ${i.attributes.game&&this.config.game_background?M` <img src="${i.attributes.game_image_header}" class="kb-steam-game-bg" /> `:""}
               </div>
-            `:M` <div class="not-found">Entity ${e} not found.</div> `}))]}handlePopup(t){const e=t.entity_id,s=new Event("hass-more-info",{composed:!0});s.detail={entityId:e},this.dispatchEvent(s)}createEntityCard(t){return M`
+            `:M` <div class="not-found">Entity ${e} not found.</div> `}))]}handlePopup(t){const e=t.entity_id,s=new Event("hass-more-info",{composed:!0});s.detail={entityId:e},this.dispatchEvent(s)}createEntityCard(t){return t.attributes.game&&"online"===t.state&&(t.state="in-game"),M`
       <div class="kb-container kb-clickable" @click=${()=>this.handlePopup(t)}>
         <div class="kb-steam-username">
           ${this.config.friendly_name?this.config.friendly_name:t.attributes.friendly_name}
