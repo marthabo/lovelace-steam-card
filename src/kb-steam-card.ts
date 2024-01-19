@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { LitElement, html, customElement, CSSResult, TemplateResult, css, PropertyDeclarations } from 'lit-element';
 
 import * as packageDetails from '../package.json';
@@ -14,22 +13,22 @@ declare global {
 }
 
 console.info(
-  `%c  LOVELACE-STEAM-CARD \n%c  ${packageDetails.version}   `,
+  `%c  KB-STEAM-CARD \n%c  ${packageDetails.version}   `,
   'color: orange; font-weight: bold; background: black',
   'color: white; font-weight: bold; background: dimgray',
 );
 
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: 'lovelace-steam-card',
-  name: 'Lovelace Steam Card',
+  type: 'kb-steam-card',
+  name: 'kb Steam Card',
   description: 'A card to show Steam integrations',
 });
 
 import { format } from 'timeago.js';
 
-@customElement('lovelace-steam-card')
-class LovelaceSteamCard extends LitElement {
+@customElement('kb-steam-card')
+class KbSteamCard extends LitElement {
   hass;
   config;
   static get properties(): PropertyDeclarations {
@@ -103,18 +102,16 @@ class LovelaceSteamCard extends LitElement {
         return entity
           ? html`
               <div
-                class="lovelace-steam-multi lovelace-clickable ${index === entities.length - 1
-                  ? 'lovelace-last'
-                  : ''} ${entity.state}"
+                class="kb-steam-multi kb-clickable ${index === entities.length - 1 ? 'kb-last' : ''} ${entity.state}"
                 @click=${() => this.handlePopup(entity)}
               >
-                <div class="lovelace-steam-user">
-                  <img src="${entity.attributes.entity_picture}" class="lovelace-steam-avatar" />
-                  <div class="lovelace-steam-username">${entity.attributes.friendly_name}</div>
+                <div class="kb-steam-user">
+                  <img src="${entity.attributes.entity_picture}" class="kb-steam-avatar" />
+                  <div class="kb-steam-username">${entity.attributes.friendly_name}</div>
                 </div>
-                <div class="lovelace-steam-value">${entity.attributes.game || '-'}</div>
+                <div class="kb-steam-value">${entity.attributes.game || '-'}</div>
                 ${entity.attributes.game && this.config.game_background
-                  ? html` <img src="${entity.attributes.game_image_header}" class="lovelace-steam-game-bg" /> `
+                  ? html` <img src="${entity.attributes.game_image_header}" class="kb-steam-game-bg" /> `
                   : ''}
               </div>
             `
@@ -132,19 +129,19 @@ class LovelaceSteamCard extends LitElement {
 
   createEntityCard(entity): TemplateResult {
     return html`
-      <div class="lovelace-container lovelace-clickable" @click=${() => this.handlePopup(entity)}>
-        <div class="lovelace-steam-username">
+      <div class="kb-container kb-clickable" @click=${() => this.handlePopup(entity)}>
+        <div class="kb-steam-username">
           ${this.config.friendly_name ? this.config.friendly_name : entity.attributes.friendly_name}
         </div>
         ${this.renderUserAvatar(entity)}
-        <div class="lovelace-steam-online-status">${entity.state}</div>
-        <div class="lovelace-steam-level">
-          <span class="lovelace-steam-level-text-container">
-            <span class="lovelace-steam-level-text">${entity.attributes.level}</span>
+        <div class="kb-steam-online-status">${entity.state}</div>
+        <div class="kb-steam-level">
+          <span class="kb-steam-level-text-container">
+            <span class="kb-steam-level-text">${entity.attributes.level}</span>
           </span>
           <ha-icon icon="mdi:shield"></ha-icon>
         </div>
-        <div class="lovelace-steam-last-online">
+        <div class="kb-steam-last-online">
           <span>
             <ha-icon icon="mdi:clock-outline"></ha-icon>
             ${entity.state === 'online' ? 'Online Since' : 'Last Online'}
@@ -162,8 +159,8 @@ class LovelaceSteamCard extends LitElement {
 
   renderUserAvatar(entity): TemplateResult {
     return entity.attributes.entity_picture
-      ? html` <img src="${entity.attributes.entity_picture}" class="lovelace-steam-avatar" /> `
-      : html` <ha-icon icon="${entity.attributes.icon}" class="lovelace-steam-avatar"></ha-icon> `;
+      ? html` <img src="${entity.attributes.entity_picture}" class="kb-steam-avatar" /> `
+      : html` <ha-icon icon="${entity.attributes.icon}" class="kb-steam-avatar"></ha-icon> `;
   }
 
   renderCurrentlyPlayingGame(entity): TemplateResult {
@@ -171,7 +168,7 @@ class LovelaceSteamCard extends LitElement {
 
     return currentlyPlayingGame
       ? html`
-          <div class="lovelace-steam-now-playing">
+          <div class="kb-steam-now-playing">
             <div class="label">Now Playing</div>
             <div class="game-title">${entity.attributes.game}</div>
             <img class="game-img" src="${entity.attributes.game_image_header}" />
@@ -191,20 +188,20 @@ class LovelaceSteamCard extends LitElement {
         padding-bottom: 8px;
       }
 
-      .lovelace-clickable {
+      .kb-clickable {
         cursor: pointer;
       }
 
-      .lovelace-steam-value {
+      .kb-steam-value {
         padding: 0 0.3em;
       }
 
-      .lovelace-steam-value,
-      .lovelace-steam-user {
+      .kb-steam-value,
+      .kb-steam-user {
         z-index: 2;
       }
 
-      .lovelace-steam-game-bg {
+      .kb-steam-game-bg {
         z-index: 0;
         position: absolute;
         right: 0;
@@ -223,37 +220,37 @@ class LovelaceSteamCard extends LitElement {
       }
 
       ha-card,
-      ha-card > .lovelace-container {
+      ha-card > .kb-container {
         padding: 16px;
         display: flex;
         flex-direction: column;
         align-items: center;
       }
 
-      .lovelace-container {
+      .kb-container {
         width: 100%;
       }
 
-      .lovelace-steam-avatar {
+      .kb-steam-avatar {
         border-radius: 50%;
         width: 40px;
         height: 40px;
         margin: 8px;
       }
 
-      ha-icon.lovelace-steam-avatar {
+      ha-icon.kb-steam-avatar {
         display: flex;
         align-items: center;
         justify-content: center;
         background: rgba(0, 0, 0, 0.8);
       }
 
-      .lovelace-steam-level {
+      .kb-steam-level {
         position: relative;
         margin: 16px;
       }
 
-      .lovelace-steam-level > .lovelace-steam-level-text-container {
+      .kb-steam-level > .kb-steam-level-text-container {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -269,30 +266,30 @@ class LovelaceSteamCard extends LitElement {
         transform: translateY(1px);
       }
 
-      .lovelace-steam-last-online {
+      .kb-steam-last-online {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
       }
 
-      .lovelace-steam-now-playing {
+      .kb-steam-now-playing {
         width: 100%;
         overflow: hidden;
         margin-top: 2em;
       }
 
-      .lovelace-steam-now-playing > .game-title {
+      .kb-steam-now-playing > .game-title {
         font-size: 1.7em;
         margin: 0.2em 0 1.5em;
       }
 
-      .lovelace-steam-now-playing > .game-img {
+      .kb-steam-now-playing > .game-img {
         width: 100%;
         height: auto;
       }
 
-      .lovelace-steam-multi {
+      .kb-steam-multi {
         width: 100%;
         display: flex;
         align-items: center;
@@ -302,16 +299,16 @@ class LovelaceSteamCard extends LitElement {
         overflow: hidden;
       }
 
-      .lovelace-steam-multi .lovelace-steam-user {
+      .kb-steam-multi .kb-steam-user {
         display: flex;
         align-items: center;
       }
 
-      .lovelace-steam-multi .lovelace-steam-avatar {
+      .kb-steam-multi .kb-steam-avatar {
         margin: 0 16px 0 0;
       }
 
-      .lovelace-steam-multi::before {
+      .kb-steam-multi::before {
         z-index: 1;
         position: absolute;
         bottom: 0;
@@ -325,13 +322,13 @@ class LovelaceSteamCard extends LitElement {
         z-index: 3;
       }
 
-      .lovelace-steam-multi.online::before,
-      .lovelace-steam-multi.snooze::before {
+      .kb-steam-multi.online::before,
+      .kb-steam-multi.snooze::before {
         box-shadow: 0 0 1em #1c1c17, 0 0 1em #ff4242;
         background: #ff4f4f;
       }
 
-      .lovelace-last {
+      .kb-last {
         margin-bottom: 0;
       }
     `;
