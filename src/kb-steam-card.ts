@@ -131,11 +131,11 @@ class KbSteamCard extends LitElement {
     // Check if the entity has the game attribute and is online
     if (entity.attributes.game && entity.state === 'online') {
       entity.state = 'in-game';
-    }
-    if (entity.state === 'in-game') {
-      entity.classList.add('in-game');
-    } else {
-      entity.classList.remove('in-game');
+      entity.classList.remove('kb-steam-multi.online');
+      entity.classList.add('kb-steam-multi.in-game');
+    } else if (entity.state === 'online') {
+      entity.classList.remove('kb-steam-multi.in-game');
+      entity.classList.add('kb-steam-multi.online');
     }
     return html`
       <div class="kb-container kb-clickable" @click=${() => this.handlePopup(entity)}>
