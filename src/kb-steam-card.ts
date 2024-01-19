@@ -103,7 +103,7 @@ class KbSteamCard extends LitElement {
         
           ? html`
               <div
-                class="kb-steam-multi kb-clickable ${index === entities.length - 1 ? 'kb-last' : ''} ${entity.state} ${entity.attributes.game && entity.state === 'online' ? 'online-in-game' : ''}"
+                class="kb-steam-multi kb-clickable ${index === entities.length - 1 ? 'kb-last' : ''} ${entity.state} ${entity.attributes.game && entity.attributes.game.trim() !== '' && entity.state === 'online' ? 'online-in-game' : ''}"
                 @click=${() => this.handlePopup(entity)}
               >
                 <div class="kb-steam-user">
