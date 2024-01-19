@@ -133,9 +133,9 @@ class KbSteamCard extends LitElement {
       entity.state = 'in-game';
     }
     if (entity.state === 'in-game') {
-      element.classList.add('in-game');
+      entity.classList.add('in-game');
     } else {
-      element.classList.remove('in-game');
+      entity.classList.remove('in-game');
     }
     return html`
       <div class="kb-container kb-clickable" @click=${() => this.handlePopup(entity)}>
