@@ -100,9 +100,10 @@ class KbSteamCard extends LitElement {
       ...entities.map((ent, index) => {
         const entity = this.hass.states[ent];
         return entity
+        
           ? html`
               <div
-                class="kb-steam-multi kb-clickable ${index === entities.length - 1 ? 'kb-last' : ''} ${entity.state}"
+                class="kb-steam-multi kb-clickable ${index === entities.length - 1 ? 'kb-last' : ''} ${entity.state} ${entity.attributes.game && entity.state === 'online' ? 'online-in-game' : ''}"
                 @click=${() => this.handlePopup(entity)}
               >
                 <div class="kb-steam-user">
@@ -336,7 +337,7 @@ class KbSteamCard extends LitElement {
         background: #57cbde;
       }
 
-      .kb-steam-multi.in-game::before {
+      .kb-steam-multi.online-in-game::before {
         background: #90ba3c;
       }
 
