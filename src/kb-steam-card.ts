@@ -128,11 +128,9 @@ class KbSteamCard extends LitElement {
   }
 
   createEntityCard(entity): TemplateResult {
-    let statusClass = 'kb-steam-multi.online';
     // Check if the entity has the game attribute and is online
     if (entity.attributes.game && entity.state === 'online') {
       entity.state = 'in-game';
-      statusClass = 'kb-steam-multi.in-game';
     }
   
     return html`
