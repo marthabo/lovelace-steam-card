@@ -363,7 +363,7 @@ const J=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
 
       .kb-steam-multi.online::before,
       .kb-steam-multi.snooze::before {
-        box-shadow: 0 0 1em #1c1c17, 0 0 1em #ff4242;
+        /* box-shadow: 0 0 1em #1c1c17, 0 0 1em #ff4242; */
         background: #ff4f4f;
       }
 
