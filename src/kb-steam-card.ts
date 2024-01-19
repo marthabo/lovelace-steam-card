@@ -322,10 +322,17 @@ class KbSteamCard extends LitElement {
         z-index: 3;
       }
 
+      .kb-steam-multi.offline::before {
+        background: #898989;
+      }
+
       .kb-steam-multi.online::before,
       .kb-steam-multi.snooze::before {
-        /* box-shadow: 0 0 1em #1c1c17, 0 0 1em #ff4242; */
-        background: #ff4f4f;
+        background: #57cbde;
+      }
+
+      .kb-steam-multi.in-game::before {
+        background: #90ba3c;
       }
 
       .kb-last {
