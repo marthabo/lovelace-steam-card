@@ -1,6 +1,6 @@
 {
-  "name": "@marthabo/lovelace-steam-card",
-  "version": "0.0.1-dev",
+  "name": "@kibibit/kb-steam-card",
+  "version": "0.0.0-development",
   "description": "Lovelace Steam Card",
   "keywords": [
     "home-assistant",
@@ -11,13 +11,14 @@
     "custom-cards",
     "hassio"
   ],
-  "module": "dist/lovelace-steam-card.js",
+  "module": "dist/kb-steam-card.js",
   "files": [
     "/dist",
     "info.md",
     "/themes",
     "hacs.json"
   ],
+  "author": "thatkookooguy <neilkalman@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "custom-card-helpers": "^1.6.6",
@@ -84,16 +85,17 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-        }
-      },
-      "publishConfig": {
-        "access": "public"
-      },
-      "repository": {
-        "type": "git",
-        "url": "https://github.com/marthabo/lovelace-steam-card.git"
-      },
-      "bugs": {
-        "url": "https://github.com/marthabo/lovelace-steam-card/issues"
-      }
     }
+  },
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kibibit/kb-steam-card.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kibibit/kb-steam-card/issues"
+  }
+}
