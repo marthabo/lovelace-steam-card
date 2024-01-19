@@ -132,6 +132,11 @@ class KbSteamCard extends LitElement {
     if (entity.attributes.game && entity.state === 'online') {
       entity.state = 'in-game';
     }
+    if (entity.state === 'in-game') {
+      element.classList.add('in-game');
+    } else {
+      element.classList.remove('in-game');
+    }
     return html`
       <div class="kb-container kb-clickable" @click=${() => this.handlePopup(entity)}>
         <div class="kb-steam-username">
